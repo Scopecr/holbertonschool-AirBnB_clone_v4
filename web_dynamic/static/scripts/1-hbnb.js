@@ -1,3 +1,4 @@
+#!/usr/bin/node
 $(document).ready(function () {
   let checkedAmenities = {};
   $(document).on('change', "input[type='checkbox']", function () {

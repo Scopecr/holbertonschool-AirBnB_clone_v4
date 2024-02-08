@@ -1,3 +1,4 @@
+#!/usr/bin/node
 $(document).ready(function () {
     $('input[type="checkbox"]').click(function () {
       const myListName = [];
