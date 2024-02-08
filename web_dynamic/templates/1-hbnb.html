@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../static/styles/4-common.css?{{ cache_id }}">
-    <link rel="stylesheet" href="../static/styles/3-header.css?{{ cache_id }}">
-    <link rel="stylesheet" href="../static/styles/3-footer.css?{{ cache_id }}">
-    <link rel="stylesheet" href="../static/styles/6-filters.css?{{ cache_id }}">
-    <link rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/8-places.css?{{ cache_id }}">
     <link rel="icon" href="../static/images/icon.png?{{ cache_id }}" type="image/png">
 
     <!-- Import jQuery -->
@@ -44,14 +44,14 @@
           <h3>Amenities</h3>
           <h4>&nbsp;</h4>
           <ul class="popover">
-	    {% for amty in amenities.values() %}
+	    {% for amenity in amenities.values() %}
 	    <li>
-	      <input type="checkbox" data-id="{{ amty.id }}" data-name="{{ amty.name }}">{{ amty.name }}
+	      <input type="checkbox" id="checkbox" style="margin-right: 10px" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">{{ amenity.name}}
 	    </li>
 	    {% endfor %}
           </ul>
 	</div>
-	<button>
+	<button type="button">
 	  Search
 	</button>
       </section>
