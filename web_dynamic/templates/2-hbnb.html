@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?{{ cache_id }}" />
     <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?{{ cache_id }}" />
     <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}" />
@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}" />
     <link rel="icon" href="../static/images/icon.png?{{ cache_id }}" />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../static/scripts/2-hbnb.js?{{ cache_id }}"></script>
+    <script src="static/scripts/2-hbnb.js"></script>
     <title>HBnB</title>
   </head>
   <body>
@@ -39,13 +39,11 @@
 	</div>
 	<div class="amenities">
 	  <h3>Amenities</h3>
-	  <div class="content-text">
-	    <h4>&nbsp;</h4>
-	  </div>
+	  <h4>&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
 	      {% for amenity in amenities %}
-	      <li><input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">{{ amenity.name }}</li>
+	      <li><input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}" > {{ amenity.name }}</li>
 	      {% endfor %}
 	    </ul>
 	  </div>
