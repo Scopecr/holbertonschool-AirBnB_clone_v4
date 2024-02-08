@@ -1,16 +1,16 @@
 $(document).ready(function () {
-  $('input[type="checkbox"]').click(function () {
-    const myListName = [];
-    const myId = [];
-    $('input[type="checkbox"]:checked').each(function () {
-      myListName.push($(this).attr('data-name'));
-      myId.push($(this).attr('data-id'));
-    });
-    if (myListName.lenght === 0) {
-      $('.amenities h4').html('&nbsp;');
+  let checkedAmenities = {};
+  $(document).on('change', "input[type='checkbox']", function () {
+    if (this.checked) {
+      checkedAmenities[$(this).data('id')] = $(this).data('name');
     } else {
-      $('.amenities h4').text(myListName.join(', '));
+      delete checkedAmenities[$(this).data('id')];
     }
-    console.log(myId);
+    let lst = Object.values(checkedAmenities);
+    if (lst.length > 0) {
+      $('div.amenities > h4').text(Object.values(checkedAmenities).join(', '));
+    } else {
+      $('div.amenities > h4').html('&nbsp;');
+    }
   });
 });
