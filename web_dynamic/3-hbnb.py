@@ -7,7 +7,7 @@ from models.amenity import Amenity
 from models.place import Place
 from os import environ
 from flask import Flask, render_template
-import uuid
+from uuid import uuid4
 
 app = Flask(__name__)
 # app.jinja_env.trim_blocks = True
@@ -26,6 +26,7 @@ def hbnb():
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
+    cache_id = uuid4()
 
     for state in states:
         st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
@@ -35,9 +36,8 @@ def hbnb():
 
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
-    cache_id = uuid.uuid4()
 
-    return render_template('1-hbnb.html',
+    return render_template('3-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
                            places=places,
