@@ -1,34 +1,25 @@
 #!/usr/bin/node
 $(document).ready(function () {
-    $('input[type="checkbox"]').click(function () {
-      const myListName = [];
-      const myId = [];
-      $('input[type="checkbox"]:checked').each(function () {
-        myListName.push($(this).attr('data-name'));
-        myId.push($(this).attr('data-id'));
-      });
-      if (myListName.lenght === 0) {
-        $('.amenities h4').html('&nbsp;');
-      } else {
-        $('.amenities h4').text(myListName.join(', '));
-      }
-      console.log(myId);
-    });
-  });
+  const amenityIds = {};
 
-  $(() => {
-    $.ajax({
-        type: 'GET',
-        url: 'http://0.0.0.0:5001/api/v1/status/',
-        success: (data) => {
-            if (data.status === 'OK') {
-                $('div#api_status').addClass('available');
-            } else {
-                $('div#api_status').removeClass('available');
-            }
-        },
-        error: () => {
-            $('div#api_status').removeClass('available');
-        }
-    });
+  $('input[type=checkbox]').change(function () {
+    const amenityId = $(this).data('id');
+    const amenityName = $(this).data('name');
+
+    if ($(this).prop('checked')) {
+      amenityIds[amenityId] = amenityName;
+    } else {
+      delete amenityIds[amenityId];
+    }
+
+    $('.amenities h4').text(Object.values(amenityIds).join(', '));
   });
+});
+
+$.getJSON("http://0.0.0.0:5001/api/v1/status/", (data) => {
+  if (data.status === "OK") {
+    $("div#api_status").addClass("available");
+  } else {
+    $("div#api_status").removeClass("available");
+  }
+});
