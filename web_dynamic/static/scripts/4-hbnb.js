@@ -11,10 +11,9 @@ $(document).ready(function () {
       } else {
         delete amenityIds[amenityId];
       }
-
+        console.log(amenityIds);
       $('.amenities h4').text(Object.values(amenityIds).join(', '));
     });
-});
 
 	$.getJSON("http://0.0.0.0:5001/api/v1/status/", (data) => {
 		if (data.status === "OK") {
@@ -26,12 +25,14 @@ $(document).ready(function () {
 
   $('button').click(function () {
   // send POST request to places_search
+  console.log("inside click");
   $.ajax({
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({ amenities: Object.keys(amenityIds) }),
     success: function (data) {
+      console.log(data);
         $('section.places').empty();
         for (const place of data) {
             const article = `<article>
@@ -51,5 +52,6 @@ $(document).ready(function () {
             $('section.places').append(article);
         }
     }
+});
 });
 });
